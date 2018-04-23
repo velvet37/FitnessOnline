@@ -1,0 +1,132 @@
+<!doctype html>
+<html ng-app="demo" ng-controller="reservationsCtrl">
+<head>
+    <!--<meta charset="utf-8">-->
+    <!--<meta content="width=device-width,initial-scale=1,minimal-ui" name="viewport">-->
+    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons">-->
+    <!--<link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/vue-material.min.css">-->
+    <!--<link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/theme/default.css">-->
+    <link rel="stylesheet" href="w3.css">
+    <title>Fitness Online</title>
+</head>
+
+<body>
+
+<div class="w3-container">
+
+<h1>Fitness Online</h1>
+<table class="w3-table w3-bordered w3-striped">
+    <tr>
+        <th>Edit</th>
+        <th>ID</th>
+        <th>CourseId</th>
+        <th>Status</th>
+    </tr>
+    <tr ng-repeat="reservation in reservations">
+        <td>
+            <button class="w3-btn w3-ripple" ng-click="editReservation(reservations.indexOf(reservation))">&#9998; Edit</button>
+        </td>
+        <td>{{ reservation.id }}</td>
+        <td>{{ reservation.courseId }}</td>
+        <td>{{ reservation.status }}</td>
+    </tr>
+</table>
+<br>
+<button class="w3-btn w3-green w3-ripple" ng-click="editReservation('new')">&#9998; Create New Reservation</button>
+
+<form ng-hide="hideform">
+    <h3 ng-show="edit">Create New Reservation:</h3>
+    <h3 ng-hide="edit">Edit Reservation:</h3>
+    <label>CourseId:</label>
+    <input class="w3-input w3-border" type="text" ng-model="courseId" ng-disabled="!edit" placeholder="CourseId">
+    <br>
+    <label>Status:</label>
+    <input class="w3-input w3-border" type="text" ng-model="status" ng-disabled="!edit" placeholder="Status">
+    <button class="w3-btn w3-green w3-ripple" ng-click="saveReservation()" ng-disabled="error || incomplete">&#10004; Save Changes</button>
+</form>
+
+</div>
+<!--<div id="app">-->
+    <!--<template>-->
+        <!--<div class="page-container">-->
+            <!--<md-app md-mode="reveal">-->
+                <!--<md-app-toolbar class="md-primary">-->
+                    <!--<md-button class="md-icon-button" @click="menuVisible = !menuVisible">-->
+                        <!--<md-icon>menu</md-icon>-->
+                    <!--</md-button>-->
+                    <!--<span class="md-title">My Title</span>-->
+                <!--</md-app-toolbar>-->
+
+                <!--<md-app-drawer :md-active.sync="menuVisible">-->
+                    <!--<md-toolbar class="md-transparent" md-elevation="0">Navigation</md-toolbar>-->
+
+                    <!--<md-list>-->
+                        <!--<md-list-item>-->
+                            <!--<md-icon>move_to_inbox</md-icon>-->
+                            <!--<span class="md-list-item-text">Inbox</span>-->
+                        <!--</md-list-item>-->
+
+                        <!--<md-list-item>-->
+                            <!--<md-icon>send</md-icon>-->
+                            <!--<span class="md-list-item-text">Sent Mail</span>-->
+                        <!--</md-list-item>-->
+
+                        <!--<md-list-item>-->
+                            <!--<md-icon>delete</md-icon>-->
+                            <!--<span class="md-list-item-text">Trash</span>-->
+                        <!--</md-list-item>-->
+
+                        <!--<md-list-item>-->
+                            <!--<md-icon>error</md-icon>-->
+                            <!--<span class="md-list-item-text">Spam</span>-->
+                        <!--</md-list-item>-->
+                    <!--</md-list>-->
+                <!--</md-app-drawer>-->
+
+                <!--<md-app-content>-->
+                    <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non explicabo, neque.</p>-->
+                    <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non explicabo, neque.</p>-->
+                    <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non explicabo, neque.</p>-->
+                    <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non explicabo, neque.</p>-->
+                    <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non explicabo, neque.</p>-->
+                    <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non explicabo, neque.</p>-->
+                    <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non explicabo, neque.</p>-->
+                    <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non explicabo, neque.</p>-->
+                    <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non explicabo, neque.</p>-->
+                    <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non explicabo, neque.</p>-->
+                    <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non explicabo, neque.</p>-->
+                    <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non explicabo, neque.</p>-->
+                    <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non explicabo, neque.</p>-->
+                    <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non explicabo, neque.</p>-->
+                    <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non explicabo, neque.</p>-->
+                <!--</md-app-content>-->
+            <!--</md-app>-->
+        <!--</div>-->
+    <!--</template>-->
+<!--</div>-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="reservationDemo.js"></script>
+<!--&lt;!&ndash;<script>&ndash;&gt;-->
+    <!--&lt;!&ndash;Vue.use(VueMaterial.default)&ndash;&gt;-->
+
+    <!--&lt;!&ndash;new Vue({&ndash;&gt;-->
+        <!--&lt;!&ndash;el: '#app',&ndash;&gt;-->
+        <!--&lt;!&ndash;data: {&ndash;&gt;-->
+            <!--&lt;!&ndash;menuVisible: false&ndash;&gt;-->
+        <!--&lt;!&ndash;}&ndash;&gt;-->
+    <!--&lt;!&ndash;})&ndash;&gt;-->
+<!--&lt;!&ndash;</script>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;<script>&ndash;&gt;-->
+    <!--&lt;!&ndash;Vue.component('Reveal', {&ndash;&gt;-->
+        <!--&lt;!&ndash;name: 'Reveal',&ndash;&gt;-->
+        <!--&lt;!&ndash;data: () => ({&ndash;&gt;-->
+            <!--&lt;!&ndash;menuVisible: false&ndash;&gt;-->
+        <!--&lt;!&ndash;})&ndash;&gt;-->
+    <!--&lt;!&ndash;})&ndash;&gt;-->
+
+<!--//</script>-->
+</body>
+</html>
