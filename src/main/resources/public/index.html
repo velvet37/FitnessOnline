@@ -8,42 +8,42 @@
 
 <div class="w3-container">
 
-<h3>Students</h3>
+<h1>Fitness Online</h1>
 
 <table class="w3-table w3-bordered w3-striped">
   <tr>
-    <th>Edit</th>
-    <th>RollNo</th>
-    <th>Name</th>
-    <th>Surname</th>
+    <th>EDIT</th>
+    <th>id</th>
+    <th>CourseId</th>
+    <th>Status</th>
   </tr>
-  <tr ng-repeat="student in students">
+  <tr ng-repeat="reservation in reservations">
     <td>
-      <button class="w3-btn w3-ripple" ng-click="editStudent(students.indexOf(student))">&#9998; Edit</button>
+      <button class="w3-btn w3-ripple" ng-click="editReservation(reservations.indexOf(reservation))">&#9998; Edit</button>
     </td>
-    <td>{{ student.rollNo }}</td>
-    <td>{{ student.name }}</td>
-    <td>{{ student.surname }}</td>
+    <td>{{ reservation.id }}</td>
+    <td>{{ reservation.courseId }}</td>
+    <td>{{ reservation.status }}</td>
   </tr>
 </table>
 <br>
-<button class="w3-btn w3-green w3-ripple" ng-click="editStudent('new')">&#9998; Create New Student</button>
+<button class="w3-btn w3-green w3-ripple" ng-click="editReservation('new')">&#9998; Create New Reservation</button>
 
 <form ng-hide="hideform">
-  <h3 ng-show="edit">Create New Student:</h3>
-  <h3 ng-hide="edit">Edit Student:</h3>
-    <label>Name:</label>
-    <input class="w3-input w3-border" type="text" ng-model="name" ng-disabled="!edit" placeholder="Name">
+  <h3 ng-show="edit">Create New Reservation:</h3>
+  <h3 ng-hide="edit">Edit Reservation:</h3>
+    <label>CourseId:</label>
+    <input class="w3-input w3-border" type="text" ng-model="courseId" ng-disabled="!edit" placeholder="CourseId">
   <br>
-    <label>Surname:</label>
-    <input class="w3-input w3-border" type="text" ng-model="surname" ng-disabled="!edit" placeholder="Surname">
-<button class="w3-btn w3-green w3-ripple" ng-click="saveStudent()" ng-disabled="error || incomplete">&#10004; Save Changes</button>
+    <label>Status:</label>
+    <input class="w3-input w3-border" type="text" ng-model="status" ng-disabled="!edit" placeholder="Status">
+<button class="w3-btn w3-green w3-ripple" ng-click="saveReservation()" ng-disabled="error || incomplete">&#10004; Save Changes</button>
 </form>
 
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-<script src="studentsDemo.js"></script>
+<script src="reservationDemo.js"></script>
 
 </body>
 </html> 

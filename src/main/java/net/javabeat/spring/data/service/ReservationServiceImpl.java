@@ -53,6 +53,13 @@ public class ReservationServiceImpl implements ReservationService {
 		return reservationToUpdate;
 	}
 
+
+//	@Override
+//	public Reservation updateReservation(Reservation reservation) {
+//		reservationRepository.updateReservationById(reservation.getId(), reservation.getCourseId(), reservation.getStatus());
+//		return reservation;
+//	}
+
 	public Reservation findOne(long id) {
 		System.out.println("Cached Pages");
 		return reservationRepository.findById(id).orElse(null);

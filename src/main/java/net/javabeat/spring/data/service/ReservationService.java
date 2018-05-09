@@ -8,7 +8,7 @@ import java.util.List;
 public interface ReservationService {
 	List<Reservation> findAll();
 	void saveReservation(Reservation reservation);
-	Reservation updateReservation(Reservation eservation);
+	Reservation updateReservation(Reservation reservation);
 
 	@Cacheable ("reservation")
 	Reservation findOne(long id);
