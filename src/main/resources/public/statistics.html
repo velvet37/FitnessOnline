@@ -1,0 +1,38 @@
+<!doctype html>
+<html ng-app="demo" ng-controller="statCtrl">
+<head>
+    <title>Method Statistics</title>
+    <link rel="stylesheet" href="w3.css">
+    <!--<link rel="icon" type="image/x-icon" href="favicon.ico">-->
+</head>
+<body>
+
+<div class="w3-container">
+    <!--<tr ng-repeat="statistic in statistics">-->
+        <!--<td>{{statistic.id}}</td>-->
+        <!--<td>{{statistic.methodName}}</td>-->
+        <!--<td>{{statistic.openTime}}</td>-->
+    <!--</tr>-->
+    <h3>Method Statistic</h3>
+    <table class="w3-table w3-bordered w3-striped">
+        <tr>
+            <th>id</th>
+            <th>Method Name</th>
+            <th>Open Time</th>
+        </tr>
+        <tr ng-repeat="statistic in statistics">
+            <td>{{statistic.id}}</td>
+            <td>{{statistic.methodName}}</td>
+            <td>{{statistic.openTime}}</td>
+        </tr>
+    </table>
+    <br>
+</div>
+
+
+<!--<script src="angular.min.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="statisticsDemo.js"></script>
+
+</body>
+</html>

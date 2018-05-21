@@ -29,6 +29,22 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+		<dependency>
+			<!-- The managed version
+			 in org.springframework.boot:spring-boot-dependencies:2.0.1.RELEASE
+			 which is 1.8.13 did not work (the package in maven repository was corrupted)
+			 therefore we use 1.18.12
+			 aspectjweaver-1.8.12.jar is passed to the JVM as an argument
+			 -->
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.8.12</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-cache</artifactId>
 		</dependency>
 		<dependency>
