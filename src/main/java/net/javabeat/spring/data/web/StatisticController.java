@@ -21,7 +21,7 @@ public class StatisticController {
     }
 
     @RequestMapping(value = "/statistics", method = RequestMethod.GET,produces = "application/json")
-    public List<Statistic> getStatistics(){
+    public List<Statistic> getStatistic(){
         return statisticService.show_all_statistic();
     }
 }
